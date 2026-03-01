@@ -16,6 +16,7 @@ export interface ApodData {
   url: string;
   hdurl?: string;
   media_type: "image" | "video";
+  thumbnail_url?: string;
   copyright?: string;
 }
 

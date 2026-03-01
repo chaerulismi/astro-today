@@ -33,7 +33,29 @@ export function ApodCard() {
                 unoptimized
               />
             </div>
-          ) : /youtube\.com|youtu\.be|vimeo\.com/.test(data.url) ? (
+          ) : data.thumbnail_url ? (
+            <a
+              href={data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative mb-4 block aspect-video overflow-hidden rounded-xl"
+            >
+              <Image
+                src={data.thumbnail_url}
+                alt={data.title}
+                fill
+                className="object-cover transition group-hover:brightness-75"
+                unoptimized
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="rounded-full bg-black/60 p-4 transition group-hover:bg-black/80">
+                  <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ) : (
             <div className="relative mb-4 aspect-video overflow-hidden rounded-xl">
               <iframe
                 src={data.url}
@@ -41,17 +63,6 @@ export function ApodCard() {
                 className="h-full w-full"
                 allowFullScreen
               />
-            </div>
-          ) : (
-            <div className="relative mb-4 flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-white/5">
-              <a
-                href={data.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-blue-400 hover:text-blue-300"
-              >
-                Open video in new tab &rarr;
-              </a>
             </div>
           )}
           <h3 className="text-base font-semibold text-white/90">
