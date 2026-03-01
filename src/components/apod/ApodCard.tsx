@@ -33,7 +33,7 @@ export function ApodCard() {
                 unoptimized
               />
             </div>
-          ) : (
+          ) : /youtube\.com|youtu\.be|vimeo\.com/.test(data.url) ? (
             <div className="relative mb-4 aspect-video overflow-hidden rounded-xl">
               <iframe
                 src={data.url}
@@ -41,6 +41,17 @@ export function ApodCard() {
                 className="h-full w-full"
                 allowFullScreen
               />
+            </div>
+          ) : (
+            <div className="relative mb-4 flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-white/5">
+              <a
+                href={data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-blue-400 hover:text-blue-300"
+              >
+                Open video in new tab &rarr;
+              </a>
             </div>
           )}
           <h3 className="text-base font-semibold text-white/90">
